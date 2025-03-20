@@ -1,6 +1,10 @@
 import streamlit as st
 import tensorflow as tf
 import numpy as np
+import pandas as pd
+
+# Load Fertilizer and Fungicide Data
+fertilizer_df = pd.read_csv("fertilizers.csv")  # Ensure this file is in the same directory
 
 # Tensorflow Model Prediction
 def model_prediction(test_image):
@@ -118,6 +122,34 @@ if(st.button("Predict")):
     'Tomato___Tomato_Yellow_Leaf_Curl_Virus',
     'Tomato___Tomato_mosaic_virus',
     'Tomato___healthy']
-    st.success("Model is predicting it's a {}".format(class_name[result_index]))
+    detected_disease = class_name[result_index]
+    st.success(f"🌿 Detected Disease: **{detected_disease.replace('_', ' ')}**")
+
+    import difflib
+
+    # Function to find the best match from CSV
+    def find_best_match(disease_name, disease_list):
+        matches = difflib.get_close_matches(disease_name, disease_list, n=1, cutoff=0.5)
+        return matches[0] if matches else None
+
+    # Get all disease names from CSV
+    csv_diseases = fertilizer_df["Crop Disease"].tolist()
+
+    # Find the best match for detected disease
+    best_match = find_best_match(detected_disease.replace('_', ' '), csv_diseases)
+
+    if best_match:
+        match = fertilizer_df[fertilizer_df["Crop Disease"] == best_match]
+        st.success(f"🛠 **Recommended Treatment for {best_match}**")
+        
+        for index, row in match.iterrows():
+            st.write(f"**🌾 Crop:** {row['Crop Disease']}")
+            st.write(f"🔹 **Recommended Fertilizer:** {row['Fertilizer']}")
+            st.write(f"🦠 **Recommended Fungicide/Insecticide:** {row['Fungicide / Insecticide']}")
+            st.write(f"💰 **Estimated Cost:** {row['Estimated Cost -1']} | {row['Estimated Cost -2']}")
+            st.write("---")
+    else:
+        st.warning("⚠ No specific treatment found in the dataset for this disease.")
+
 
     
