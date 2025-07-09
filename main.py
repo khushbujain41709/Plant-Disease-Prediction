@@ -32,7 +32,7 @@ if app_mode == "Home":
     ### How It Works
     1. **Upload Image:** Go to the **Disease Recognition** page and upload an image of a plant with suspected diseases.
     2. **Analysis:** Our system will process the image using advanced algorithms to identify potential diseases.
-    3. **Results:** View the results and recommendations for further action.
+    3. **Results:** View the results.
 
     ### Why Choose Us?
     - **Accuracy:** Our system utilizes state-of-the-art machine learning techniques for accurate disease detection.
@@ -54,15 +54,13 @@ elif app_mode == "About":
         st.image(image_path, use_container_width=True)
     st.markdown("""
     #### About Dataset
-    This dataset is recreated using offline augmentation from the original dataset. The original dataset can be found on this GitHub repo.
+    The dataset consists of about 87K RGB images of healthy and diseased crop leaves categorized into 38 different classes. The total dataset is divided into an 80/20 ratio of training and validation set preserving the directory structure.
 
-    This dataset consists of about 87K RGB images of healthy and diseased crop leaves categorized into 38 different classes. The total dataset is divided into an 80/20 ratio of training and validation set preserving the directory structure.
-
-    A new directory containing 33 test images is created later for prediction purpose.
+    A new directory containing 24 test images is created later for prediction purpose.
 
     #### Content
     1. Train (70,295 images)
-    2. Test (33 images)
+    2. Test (24 images)
     3. Valid (17,572 images)
     """)
 
@@ -96,7 +94,7 @@ elif app_mode == "Plant Disease Prediction":
 elif app_mode == "Download Test Images":
     st.header("Download Sample Test Images")
 
-    test_images_folder = "New Plant Diseases Dataset(Augmented)/test"
+    test_images_folder = "C:\\Users\\khushbu\\OneDrive\\Desktop\\answer\\Plant-Disease-Prediction-main\\test"
     if not os.path.exists(test_images_folder):
         st.error("Test images folder not found. Please check the path.")
     else:
