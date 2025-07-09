@@ -16,22 +16,3 @@ Steps :
 2) Put the libraries used in the app in a file named requirement.txt
 3) Visit the link - https://share.streamlit.io/
 4) Deploy
-
-Streamlit :
-1) Free and Open Source framework
-2) Python Based Library
-3) Build and share web apps for machine learning and data science.
-4) Compatible with the majority of Python libraries(pandas, matplotlib, keras, seaborn, plotly, pyTorch, SymPy(latex))
-5) Data caching simplifies and speeds up computation pipelines.
-
-Install Streamlit :
-pip install streamlit
-
-Run Streamlit :
-streamlit run file_name.py
-
-Steps :
-1) Push all files in a repository in GitHub
-2) Put the libraries used in the app in a file named requirement.txt
-3) Visit the link - https://share.streamlit.io/
-4) Deploy
