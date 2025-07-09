@@ -14,12 +14,12 @@ def model_prediction(test_image):
 
 # Sidebar
 st.sidebar.title("Dashboard")
-app_mode = st.sidebar.selectbox("Select Page" , ["Home" , "About" , "Plant Disease Prediction"])
+app_mode = st.sidebar.selectbox("Select Page" , ["Home" , "About" , "Plant Disease Prediction", "Download Test Images"])
 
 # Home Page
 if(app_mode == "Home"):
     st.header("Plant Disease Recognition System")
-    image_path = "home_page.jpeg"
+    image_path = "home_page1.jpeg"
     st.image(image_path, use_container_width=True)
     # Hash in markdown is used for font size
     st.markdown("""
@@ -110,3 +110,28 @@ elif(app_mode == "Plant Disease Prediction"):
         'Tomato___Tomato_mosaic_virus',
         'Tomato___healthy']
         st.success("Model is predicting it's a {}".format(class_name[result_index]))
+elif app_mode == "Download Test Images":
+    # (Insert the image display and download code here)
+        import os
+        from PIL import Image
+        st.header("Download Sample Test Images")
+        # Folder where test images are stored
+        test_images_folder = "C:\\Users\\khushbu\\OneDrive\\Desktop\\Plant_Disease\\New Plant Diseases Dataset(Augmented)\\test"
+        # List all image files
+        image_files = [f for f in os.listdir(test_images_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+        # Sort images for consistency (optional)
+        image_files.sort()
+        # Display images with download buttons
+        cols = st.columns(3)  # 3 images per row
+        for idx, image_file in enumerate(image_files):
+            image_path = os.path.join(test_images_folder, image_file)
+            with cols[idx % 3]:
+                image = Image.open(image_path)
+                st.image(image, caption=image_file)
+                with open(image_path, "rb") as file:
+                    btn = st.download_button(
+                        label="Download",
+                        data=file,
+                        file_name=image_file,
+                        mime="image/jpeg"
+                    )
