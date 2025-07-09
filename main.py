@@ -19,7 +19,7 @@ app_mode = st.sidebar.selectbox("Select Page" , ["Home" , "About" , "Plant Disea
 # Home Page
 if(app_mode == "Home"):
     st.header("Plant Disease Recognition System")
-    image_path = "home_page1.jpeg"
+    image_path = "home_page.jpeg"
     st.image(image_path, use_container_width=True)
     # Hash in markdown is used for font size
     st.markdown("""
