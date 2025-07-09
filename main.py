@@ -32,7 +32,7 @@ if app_mode == "Home":
     ### How It Works
     1. **Upload Image:** Go to the **Disease Recognition** page and upload an image of a plant with suspected diseases.
     2. **Analysis:** Our system will process the image using advanced algorithms to identify potential diseases.
-    3. **Results:** View the results and recommendations for further action.
+    3. **Results:** View the results.
 
     ### Why Choose Us?
     - **Accuracy:** Our system utilizes state-of-the-art machine learning techniques for accurate disease detection.
@@ -54,6 +54,7 @@ elif app_mode == "About":
         st.image(image_path, use_container_width=True)
     st.markdown("""
     #### About Dataset
+<<<<<<< HEAD
     This dataset is recreated using offline augmentation from the original dataset. The original dataset can be found on this GitHub repo.
 
     This dataset consists of about 87K RGB images of healthy and diseased crop leaves categorized into 38 different classes. The total dataset is divided into an 80/20 ratio of training and validation set preserving the directory structure.
@@ -63,6 +64,15 @@ elif app_mode == "About":
     #### Content
     1. Train (70,295 images)
     2. Test (33 images)
+=======
+    The dataset consists of about 87K RGB images of healthy and diseased crop leaves categorized into 38 different classes. The total dataset is divided into an 80/20 ratio of training and validation set preserving the directory structure.
+
+    A new directory containing 24 test images is created later for prediction purpose.
+
+    #### Content
+    1. Train (70,295 images)
+    2. Test (24 images)
+>>>>>>> 8befb1808ea8abe2210f440f6c86dac3c0cdc83b
     3. Valid (17,572 images)
     """)
 
