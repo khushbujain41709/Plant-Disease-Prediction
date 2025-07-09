@@ -94,7 +94,7 @@ elif app_mode == "Plant Disease Prediction":
 elif app_mode == "Download Test Images":
     st.header("Download Sample Test Images")
 
-    test_images_folder = "C:\\Users\\khushbu\\OneDrive\\Desktop\\Plant_Disease\\New Plant Diseases Dataset(Augmented)\\test"
+    test_images_folder = "test"
     if not os.path.exists(test_images_folder):
         st.error("Test images folder not found. Please check the path.")
     else:
